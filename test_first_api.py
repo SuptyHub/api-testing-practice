@@ -14,7 +14,7 @@ def test_get_all_posts():
     response = requests.get(f"{BASE_URL}/posts")
     assert response.status_code == 200
     data = response.json()
-    assert len(response.json()) > 0
+    assert len(data) > 0
 
 
 def test_get_posts():
@@ -26,10 +26,9 @@ def test_get_posts():
     assert "title" in posts[0]
 
 
-def test_get_XNotFound():
+def test_get_nonexistent_post_returns_404():
     response = requests.get(f"{BASE_URL}/posts/99999")
     assert response.status_code == 404
 
 
-def test_this_must_fail():
-    assert 1 == 2
+
